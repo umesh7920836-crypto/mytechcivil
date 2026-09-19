@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civil Design Studio | 3D House Plans & Layouts</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Model Viewer Script (Used to interactively view 3D .glb/.gltf models) -->
+    <script type="module" src="https://googleapis.com"></script>
+</head>
+<body>
+
+    <!-- Header & Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Civil<span>Studio</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#portfolio">Our 3D Models</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><button class="btn-login" id="authBtn" onclick="openModal()">Login / Register</button></li>
+        </ul>
+    </nav>
+
+    <!-- Main Hero Banner Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Apne Dream Home Ko <span>3D Architecture</span> Me Dekhein</h1>
+            <p>Expert Civil Engineers dwara banaye gaye nakshe aur modern elevation models.</p>
+            <a href="#contact" class="btn-primary">Aapna Naksha Banwayein</a>
+        </div>
+    </section>
+
+    <!-- 3D Architecture Model Portfolio Section -->
+    <section id="portfolio" class="models-section">
+        <h2>Humare Latest 3D House Plans</h2>
+        <p class="section-subtitle">Niche diye gaye models ko aap rotate, zoom, aur pure angle se explore kar sakte hain.</p>
+        
+        <div class="model-container">
+            <!-- 3D Model Project Card 1 -->
+            <div class="model-card">
+                <h3>Modern 3BHK Luxury Villa</h3>
+                <span class="badge">Trending</span>
+                
+                <!-- NOTE: 'src' attribute me aapki 3D file (.glb) ka sahi naam hona chahiye -->
+                <model-viewer src="house.glb" 
+                              ar 
+                              camera-controls 
+                              touch-action="pan-y" 
+                              alt="Modern 3D House Model Design" 
+                              shadow-intensity="1"
+                              auto-rotate>
+                </model-viewer>
+                
+                <div class="model-details">
+                    <p><strong>Plot Size:</strong> 30 × 50 Feet</p>
+                    <p><strong>Type:</strong> Double Storey (Duplex)</p>
+                </div>
+                <a href="#contact" class="btn-card">Is Design Ka Quotation Chahiye</a>
+            </div>
+
+            <!-- 3D Model Project Card 2 -->
+            <div class="model-card">
+                <h3>Compact 2BHK Smart House</h3>
+                <span class="badge blue">Best for Small Plots</span>
+                
+                <model-viewer src="house2.glb" 
+                              ar 
+                              camera-controls 
+                              touch-action="pan-y" 
+                              alt="Small Plot 3D House Design" 
+                              shadow-intensity="1">
+                </model-viewer>
+                
+                <div class="model-details">
+                    <p><strong>Plot Size:</strong> 20 × 40 Feet</p>
+                    <p><strong>Type:</strong> Single Storey</p>
+                </div>
+                <a href="#contact" class="btn-card">Is Design Ka Quotation Chahiye</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Contact & Consultancy Form Section -->
+    <section id="contact" class="contact-section">
+        <h2>Makan Ka Naksha & 3D Model Banwane Ke Liye Form Bharein</h2>
+        <p>Apni requirements share karein, humari engineering team aapko callback karegi.</p>
+        
+        <form class="contact-form" onsubmit="alert('Thank you! Aapki details register ho gayi hain. Hum aapse jald hi contact karenge.');">
+            <div class="form-group">
+                <input type="text" placeholder="Aapka Poora Naam" required>
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Aapki Email ID" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" placeholder="Mobile/WhatsApp Number" required>
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Plot details likhein (Jaise: Size 30x40, Kitne Kamre Chahiye, Budget, Single/Double Storey etc.)" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Submit Requirements</button>
+        </form>
+    </section>
+
+    <!-- Login & Registration Modular Popup Window -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            
+            <!-- Dynamic Tab Switches -->
+            <div class="tab-container">
+                <button class="tab-btn active" id="loginTab" onclick="switchTab('login')">Sign In</button>
+                <button class="tab-btn" id="registerTab" onclick="switchTab('register')">Register</button>
+            </div>
+
+            <!-- Authentication User Forms -->
+            <!-- 1. Sign In Container -->
+            <form id="loginForm" class="auth-form" onsubmit="handleAuth(event, 'login')">
+                <input type="email" id="loginEmail" placeholder="Registered Email ID" required>
+                <input type="password" id="loginPass" placeholder="Password" required>
+                <button type="submit" class="btn-submit">Sign In to Dashboard</button>
+            </form>
+
+            <!-- 2. Create Account Container -->
+            <form id="registerForm" class="auth-form hidden" onsubmit="handleAuth(event, 'register')">
+                <input type="text" id="regName" placeholder="Full Name (Civil Engineer / Client)" required>
+                <input type="email" id="regEmail" placeholder="Email Address" required>
+                <input type="password" id="regPass" placeholder="Create Strong Password" required>
+                <button type="submit" class="btn-submit">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Company Footer Section -->
+    <footer>
+        <p>&copy; 2026 CivilDesignStudio. Made for Civil Engineers. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Interactivity Script Linking -->
+    <script src="script.js"></script>
+</body>
+</html>
